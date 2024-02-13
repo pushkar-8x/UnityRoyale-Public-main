@@ -16,8 +16,8 @@ namespace UnityRoyale
 			
 			//cm might be null because this notification receiver actually gets notifications from ALL markers on the Timeline
 			//so we need to make sure it's of type CardMarker
-			if(cm != null)
-				gameManager.UseCard(cm.card, cm.position, cm.faction);
+			/*if(cm != null)
+				gameManager.UseCard(cm.card, cm.position, cm.faction);*/
 		}
 	}
 }
