@@ -13,6 +13,7 @@ namespace UnityRoyale
     {
         public AssetLabelReference[] labelsToInclude; //set by designers
 
+
         private CardData[] cards; //the deck of actual cards, needs to be shuffled
         private int currentCard = 0;
 

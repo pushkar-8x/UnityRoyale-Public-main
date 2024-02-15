@@ -18,6 +18,7 @@ namespace UnityRoyale
 		public GameObject introTimeline;
         public PlaceableData castlePData;
 		public ParticlePool appearEffectPool;
+        public float MaxElixirValue = 200;
 
         private CardManager cardManager;
         private CPUOpponent CPUOpponent;
@@ -34,6 +35,7 @@ namespace UnityRoyale
         private bool gameOver = false;
         private bool updateAllPlaceables = false; //used to force an update of all AIBrains in the Update loop
         private const float THINKING_DELAY = 2f;
+        public float currentElixirValue;
 
         private void Awake()
         {
@@ -50,6 +52,8 @@ namespace UnityRoyale
             //listeners on other managers
             cardManager.OnCardUsed += UseCard;
             CPUOpponent.OnCardUsed += UseCard;
+
+            currentElixirValue = MaxElixirValue;
 
             //initialise Placeable lists, for the AIs to pick up and find a target
             playerUnits = new List<ThinkingPlaceable>();
@@ -88,6 +92,11 @@ namespace UnityRoyale
         {
             if(gameOver)
                 return;
+
+            if(currentElixirValue<=MaxElixirValue)
+            {
+                currentElixirValue += Time.deltaTime;
+            }
 
             ThinkingPlaceable targetToPass; //ref
 			ThinkingPlaceable p; //ref
@@ -196,8 +205,10 @@ namespace UnityRoyale
 
         public void UseCard(CardData cardData, Vector3 position, Placeable.Faction pFaction)
         {
-            for(int pNum=0; pNum<cardData.placeablesData.Length; pNum++)
+            if (currentElixirValue <= 0) return;
+            for (int pNum=0; pNum<cardData.placeablesData.Length; pNum++)
             {
+                
                 PlaceableData pDataRef = cardData.placeablesData[pNum];
                 Quaternion rot = (pFaction == Placeable.Faction.Player) ? Quaternion.identity : Quaternion.Euler(0f, 180f, 0f);
                 //Prefab to spawn is the associatedPrefab if it's the Player faction, otherwise it's alternatePrefab. But if alternatePrefab is null, then first one is taken
@@ -205,12 +216,19 @@ namespace UnityRoyale
                 GameObject newPlaceableGO = Instantiate<GameObject>(prefabToSpawn, position + cardData.relativeOffsets[pNum], rot);
                 
                 SetupPlaceable(newPlaceableGO, pDataRef, pFaction);
+                UpdateElixirValue(pDataRef.elixirCost);
 
-				appearEffectPool.UseParticles(position + cardData.relativeOffsets[pNum]);
+                appearEffectPool.UseParticles(position + cardData.relativeOffsets[pNum]);
             }
 			//audioManager.PlayAppearSFX(position);
-
+            
             updateAllPlaceables = true; //will force all AIBrains to update next time the Update loop is run
+        }
+
+        private void UpdateElixirValue(float elixirCost)
+        {
+            currentElixirValue -= elixirCost;
+
         }
 
 

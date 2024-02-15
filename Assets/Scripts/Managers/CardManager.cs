@@ -14,6 +14,8 @@ namespace UnityRoyale
         public GameObject cardPrefab;
         public DeckData playersDeck;
 		public MeshRenderer forbiddenAreaRenderer;
+
+
 		
         public UnityAction<CardData, Vector3, Placeable.Faction> OnCardUsed;
         
@@ -27,10 +29,12 @@ namespace UnityRoyale
         private GameObject previewHolder;
         private Vector3 inputCreationOffset = new Vector3(0f, 0f, 1f); //offsets the creation of units so that they are not under the player's finger
 
+
         private void Awake()
         {
             previewHolder = new GameObject("PreviewHolder");
-            cards = new Card[3]; //3 is the length of the dashboard
+            cards = new Card[3];
+//3 is the length of the dashboard
         }
 
         public void LoadDeck()
@@ -159,7 +163,10 @@ namespace UnityRoyale
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, playingFieldMask))
             {
                 if(OnCardUsed != null)
-                    OnCardUsed(cards[cardId].cardData, hit.point + inputCreationOffset, Placeable.Faction.Player); //GameManager picks this up to spawn the actual Placeable
+                {
+                    OnCardUsed(cards[cardId].cardData, hit.point + inputCreationOffset, Placeable.Faction.Player);
+                }
+                     //GameManager picks this up to spawn the actual Placeable
 
                 ClearPreviewObjects();
                 Destroy(cards[cardId].gameObject); //remove the card itself
@@ -175,6 +182,8 @@ namespace UnityRoyale
 
 			forbiddenAreaRenderer.enabled = false;
         }
+
+        
 
         //happens when the card is put down on the playing field, and while dragging (when moving out of the play field)
         private void ClearPreviewObjects()

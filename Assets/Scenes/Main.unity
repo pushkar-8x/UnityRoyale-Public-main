@@ -19240,8 +19240,6 @@ PlayableDirector:
     value: {fileID: 150622777}
   - key: {fileID: 114508982355978702, guid: a71f3474e53304689949c50db557b029, type: 2}
     value: {fileID: 1888772241}
-  - key: {fileID: -1277937613637869295, guid: a71f3474e53304689949c50db557b029, type: 2}
-    value: {fileID: 0}
   - key: {fileID: -3400740993368105078, guid: a71f3474e53304689949c50db557b029, type: 2}
     value: {fileID: 101622737}
   - key: {fileID: 961031610110828311, guid: a71f3474e53304689949c50db557b029, type: 2}
@@ -26321,8 +26319,6 @@ PlayableDirector:
     value: {fileID: 1888772241}
   - key: {fileID: -3400740993368105078, guid: 032788b30107b41c18dbf823825820c4, type: 2}
     value: {fileID: 2067076651}
-  - key: {fileID: -1277937613637869295, guid: 032788b30107b41c18dbf823825820c4, type: 2}
-    value: {fileID: 0}
   - key: {fileID: 822788152920031568, guid: 032788b30107b41c18dbf823825820c4, type: 2}
     value: {fileID: 1115113703}
   - key: {fileID: -833866850438505878, guid: 032788b30107b41c18dbf823825820c4, type: 2}
@@ -26457,7 +26453,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117297311}
-  m_LocalRotation: {x: 0.07686419, y: -0.1262219, z: 0.009810139, w: 0.98897105}
+  m_LocalRotation: {x: 0.07686421, y: -0.12622193, z: 0.009810144, w: 0.98897105}
   m_LocalPosition: {x: 4.24, y: 3.51, z: -5.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -34782,7 +34778,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506690191}
-  m_LocalRotation: {x: 0.23027983, y: 0.24231552, z: -0.05932401, w: 0.94060355}
+  m_LocalRotation: {x: 0.23027986, y: 0.24231555, z: -0.059324022, w: 0.94060355}
   m_LocalPosition: {x: -5.64, y: 8.12, z: -21.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -39091,6 +39087,7 @@ MonoBehaviour:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!4 &1762673920
 Transform:
   m_ObjectHideFlags: 0
@@ -41246,6 +41243,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2

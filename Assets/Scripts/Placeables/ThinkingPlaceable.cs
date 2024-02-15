@@ -26,7 +26,7 @@ namespace UnityRoyale
 
         [HideInInspector] public ThinkingPlaceable target;
         [HideInInspector] public HealthBar healthBar;
-
+        [HideInInspector] public float elixirCost;
         [HideInInspector] public float hitPoints;
         [HideInInspector] public float attackRange;
         [HideInInspector] public float attackRatio;
